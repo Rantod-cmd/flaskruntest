@@ -1,7 +1,8 @@
 from flask import Flask
-from flask import render_template
-from datetime import datetime
+from flask import render_template, redirect, url_for
 from flask import request
+
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -47,4 +48,4 @@ def create_news_item():
     item = new_news_item(request.form['title'],
                          request.form['body'])
     news_items[item['id']] = item
-    return ''
+    return redirect(url_for('index'))
